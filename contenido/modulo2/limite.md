@@ -4,10 +4,16 @@ Cuando creamos un contenedor, los procesos que se ejecuten en él pueden usar to
 
 ## Limitando el uso de CPU
 
-Lo primero que podemos averiguar es el número de CPUs que tiene el Host Docker, para ello ejecutamos el comando:
+Lo primero que podemos averiguar es el número de CPUs que tiene el Host Docker, para ello ejecutamos en linux el comando:
 
 ```bash
 $ nproc --all
+```
+
+para windows no existe un equivalente pero podemos usar esta instrucción en powershell si queremos verlo 
+
+```bash
+Get-CimInstance -ClassName Win32_Processor | Select-Object NumberOfCores, NumberOfLogicalProcessors
 ```
 
 Para limitar la cantidad de recursos de CPU que puede utilizar un contenedor, puedes utilizar la opción `--cpus`. Puedes especificar la cantidad de CPUs que deseas asignar al contenedor, ya sea en términos de núcleos completos o fracciones de núcleos. Por ejemplo, para limitar un contenedor a utilizar un núcleo completo:
