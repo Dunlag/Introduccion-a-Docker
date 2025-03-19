@@ -32,12 +32,19 @@ $ docker inspect --format '{{.HostConfig.NanoCpus}}' servidor_web
 
 Este comando mostrará la cantidad de CPU asignada al contenedor en unidades de *nanocpus*. Ten en cuenta que la interpretación de estos valores puede no ser intuitiva, pero representan la capacidad de procesamiento relativa asignada al contenedor en comparación con la capacidad total del sistema.
 
-Si deseas obtener información más legible, puedes convertir los *nanocpus* a CPUs utilizando los siguientes comandos:
+Si deseas obtener información más legible, en Linux puedes convertir los *nanocpus* a CPUs utilizando los siguientes comandos:
 
 ```bash
 nano_cpus=$(docker inspect --format '{{.HostConfig.NanoCpus}}' servidor_web)
 cpus=$(echo "scale=2; $nano_cpus / 1000000000" | bc)
 echo "CPUs asignadas al contenedor: $cpus"
+```
+por otro lado en Windows el comando seria:
+
+```bash
+$nano_cpus = docker inspect --format '{{.HostConfig.NanoCpus}}' servidor_web
+$cpus = [decimal]($nano_cpus / 1000000000)
+Write-Host "CPUs asignadas al contenedor: $cpus"
 ```
 
 Este fragmento de código convierte los *nanocpus* a CPUs dividiendo por 1000000000 (mil millones) utilizando la herramienta `bc` (calculadora de línea de comandos). La variable `cpus` contendrá la cantidad de CPUs asignadas al contenedor.
