@@ -12,8 +12,11 @@ $ cd /opt/mariadb
 opt/mariadb$ ls
 aria_log.00000001  aria_log_control  ib_buffer_pool  ib_logfile0  ibdata1  ibtmp1  multi-master.info  mysql  performance_schema
 
-//recordar poner  entre comillas la variable de entorno para que mysql pille directamente la variable
-$ docker exec -it some-mariadb bash -c 'mysql -u root -p"$MYSQL_ROOT_PASSWORD"'
+// En algunos sistemas, como Windows, puede ser necesario poner la variable entre comillas para que `mysql` la interprete correctamente:
+$ docker exec -it some-mariadb bash -c 'mysql -u root -p"$MARIADB_ROOT_PASSWORD"'
+
+ // En sistemas Linux como Ubuntu, la variable se puede usar sin comillas:
+$ docker exec -it some-mariadb bash -c 'mysql -u root -p$MARIADB_ROOT_PASSWORD'
 ...
 MariaDB [(none)]> create database prueba;
 MariaDB [(none)]> quit
