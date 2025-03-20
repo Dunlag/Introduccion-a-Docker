@@ -12,7 +12,8 @@ $ cd /opt/mariadb
 opt/mariadb$ ls
 aria_log.00000001  aria_log_control  ib_buffer_pool  ib_logfile0  ibdata1  ibtmp1  multi-master.info  mysql  performance_schema
 
-$ docker exec -it some-mariadb bash -c 'mysql -u root -p$MARIADB_ROOT_PASSWORD'
+//recordar poner  entre comillas la variable de entorno para que mysql pille directamente la variable
+$ docker exec -it some-mariadb bash -c 'mysql -u root -p"$MYSQL_ROOT_PASSWORD"'
 ...
 MariaDB [(none)]> create database prueba;
 MariaDB [(none)]> quit
