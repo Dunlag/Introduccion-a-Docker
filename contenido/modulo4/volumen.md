@@ -26,11 +26,12 @@ Para obtener información de un volumen:
 $ docker volume inspect my-vol
 [
     {
+        "CreatedAt": "2025-03-20T11:28:00Z",
         "Driver": "local",
-        "Labels": {},
+        "Labels": null,
         "Mountpoint": "/var/lib/docker/volumes/my-vol/_data",
         "Name": "my-vol",
-        "Options": {},
+        "Options": null,
         "Scope": "local"
     }
 ]
