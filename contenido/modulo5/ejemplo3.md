@@ -8,6 +8,7 @@ $ docker network create red_wp
 
 Siguiendo la documentación de la imagen [`mariadb`](https://hub.docker.com/_/mariadb) y la imagen [`wordpress`](https://hub.docker.com/_/wordpress) podemos ejecutar los siguientes comandos para crear los dos contenedores:
 
+Para Linux
 ```bash
 $ docker run -d --name servidor_mariadb \
                 --network red_wp \
@@ -33,7 +34,27 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 5b2c5a82a524        wordpress           "docker-entrypoint.s…"   9 minutes ago       Up 9 minutes        0.0.0.0:80->80/tcp   servidor_wp
 f70f22aed3d1        mariadb             "docker-entrypoint.s…"   9 minutes ago       Up 9 minutes        3306/tcp             servidor_mariadb
 ```
+para Windows Powershell
+```bash
+docker run -d --name servidor_mariadb \
+    --network red_wp \
+    -v vol_mariadb:/var/lib/mysql \
+    -e MARIADB_DATABASE=bd_wp \
+    -e MARIADB_USER=user_wp \
+    -e MARIADB_PASSWORD=asdasd \
+    -e MARIADB_ROOT_PASSWORD=asdasd \
+    mariadb
 
+docker run -d --name servidor_wp \
+    --network red_wp \
+    -v vol_wordpress:/var/www/html/ \
+    -e WORDPRESS_DB_HOST=servidor_mariadb \
+    -e WORDPRESS_DB_USER=user_wp \
+    -e WORDPRESS_DB_PASSWORD=asdasd \
+    -e WORDPRESS_DB_NAME=bd_wp \
+    -p 80:80 \
+    wordpress
+```
 Algunas observaciones:
 
 * El contenedor `servidor_mariadb` **ejecuta un script `docker-entrypoint.sh`** que es el encargado, a partir de las variables de entorno, de configurar la base de datos: crea usuario, crea base de datos, cambia la contraseña del usuario root,... y termina ejecutando el servidor MariaDB.
