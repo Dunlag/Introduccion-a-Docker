@@ -7,7 +7,7 @@ Puedes encontrar los ficheros necesarios para este ejemplo en el [Repositorio co
 Veamos un fichero de ejemplo `compose.yaml` donde se define el escenario para desplegar la aplicación [Let's Chat](https://github.com/sdelements/lets-chat) que es un chat escrito en NodeJS, que guarda su información en una base de datos MongoDB:
 
 ```yaml
-version: '3.1'
+#version: '3.1'
 name: 'escenario_letschat'
 services:
   app:
@@ -29,6 +29,7 @@ services:
 volumes:
   mongo:
 ```
+*el atributo version esta obsoleto, si arrancas el archivo te saldra un aviso de que no lo usea para evitar problemas
 
 ## Estructura del fichero compose.yaml
 
