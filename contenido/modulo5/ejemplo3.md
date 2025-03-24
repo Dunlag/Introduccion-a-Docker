@@ -36,23 +36,23 @@ f70f22aed3d1        mariadb             "docker-entrypoint.s…"   9 minutes ago
 ```
 para Windows Powershell
 ```bash
-docker run -d --name servidor_mariadb \
-    --network red_wp \
-    -v vol_mariadb:/var/lib/mysql \
-    -e MARIADB_DATABASE=bd_wp \
-    -e MARIADB_USER=user_wp \
-    -e MARIADB_PASSWORD=asdasd \
-    -e MARIADB_ROOT_PASSWORD=asdasd \
+docker run -d --name servidor_mariadb `
+    --network red_wp `
+    -v vol_mariadb:/var/lib/mysql `
+    -e MARIADB_DATABASE=bd_wp `
+    -e MARIADB_USER=user_wp `
+    -e MARIADB_PASSWORD=asdasd `
+    -e MARIADB_ROOT_PASSWORD=asdasd `
     mariadb
 
-docker run -d --name servidor_wp \
-    --network red_wp \
-    -v vol_wordpress:/var/www/html/ \
-    -e WORDPRESS_DB_HOST=servidor_mariadb \
-    -e WORDPRESS_DB_USER=user_wp \
-    -e WORDPRESS_DB_PASSWORD=asdasd \
-    -e WORDPRESS_DB_NAME=bd_wp \
-    -p 80:80 \
+docker run -d --name servidor_wp `
+    --network red_wp `
+    -v vol_wordpress:/var/www/html/ `
+    -e WORDPRESS_DB_HOST=servidor_mariadb `
+    -e WORDPRESS_DB_USER=user_wp `
+    -e WORDPRESS_DB_PASSWORD=asdasd `
+    -e WORDPRESS_DB_NAME=bd_wp `
+    -p 80:80 `
     wordpress
 ```
 Algunas observaciones:
