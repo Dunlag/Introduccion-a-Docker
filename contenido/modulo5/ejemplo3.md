@@ -35,7 +35,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 f70f22aed3d1        mariadb             "docker-entrypoint.s…"   9 minutes ago       Up 9 minutes        3306/tcp             servidor_mariadb
 ```
 para Windows Powershell
-```bash
+```powershell
 docker run -d --name servidor_mariadb `
     --network red_wp `
     -v vol_mariadb:/var/lib/mysql `
