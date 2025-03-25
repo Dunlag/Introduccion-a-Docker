@@ -44,6 +44,32 @@ networks:
               - subnet: 192.168.20.0/24
                 gateway: 192.168.20.1
 ```
+version que me ha funcionado a mi en windowsmas simplificado y sin obligarle a usar ips concreta que son lo que dan errores
+```
+services:
+  c1:
+    container_name: contenedor1
+    image: alpine
+    restart: always
+    hostname: contenedor1
+    networks:
+      - red_default
+    command: sleep infinity
+
+  c2:
+    container_name: contenedor2
+    image: alpine
+    restart: always
+    hostname: contenedor2
+    networks:
+      - red_default
+    command: sleep infinity
+
+networks:
+  red_default:
+    driver: bridge
+```
+
 
 ## Definición de redes en Docker Compose
 
